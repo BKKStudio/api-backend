@@ -3,6 +3,7 @@ const ProductRoutes = require("./src/product/routes")
 const UsersRoutes = require("./src/users/routes")
 const app = express();
 
+require('dotenv').config()
 
 app.use(express.json())
 
