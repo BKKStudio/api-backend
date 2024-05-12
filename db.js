@@ -1,12 +1,9 @@
-const {Pool}= require("pg");
+import pg from 'pg';
+
+const { Pool } = pg;
 
 const pool = new Pool({
-    connectionString:process.env.POSTGRES_URL + "?sslmode=require",
+  connectionString: process.env.POSTGRES_URL,
 })
 
-pool.connect((err) => {
-    if(err) throw err
-    console.log("connect");
-})
-
-module.exports  =  pool;
+module.exports = pool;

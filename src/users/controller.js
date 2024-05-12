@@ -4,11 +4,13 @@ const prisma = new Prisma.PrismaClient();
 
 
 const getAllUsers = async (req,res) => {
+  await prisma.$connect();
     const user = await prisma.user.findMany({})
     return user
 }
 
 const getUserฺById = async (req,res) => {
+  await prisma.$connect();
     const id = req.params.id;
     const user = await prisma.user.findUnique({
         where: {
@@ -20,6 +22,7 @@ const getUserฺById = async (req,res) => {
 
 
 const addUser = async (req,res) => {
+  await prisma.$connect();
  const { name, username, password,img } = await  req.body;
 
  const newUser = await prisma.user.create({
