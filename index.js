@@ -3,11 +3,11 @@ const ProductRoutes = require("./src/product/routes")
 const UsersRoutes = require("./src/users/routes")
 const app = express();
 
-
+require('dotenv').config()
 app.use(express.json())
 
 app.get("/",(req,res) => {
-    res.send("Hello Word!!")
+    res.send("Hello Word! Welcome To API WebSite By.6400502 Seksak Aranchot!")
 })
 
 
