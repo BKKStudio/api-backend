@@ -16,7 +16,9 @@ app.get("/",(req,res) => {
 })
 
 app.use(cors({
-    origin: 'https://api-backend-six-zeta.vercel.app/' // Replace with your allowed origin
+    origin: 'http://localhost:3000/',
+    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    credentials: true,
   }));
 
 
