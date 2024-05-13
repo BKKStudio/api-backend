@@ -30,6 +30,8 @@ const getlogin = async (req, res) => {
       success: true,
     });
     response.cookies.set("token", token, { httpOnly: true });
+
+
     return response;
   } catch (error) {
     console.error(error);
@@ -38,6 +40,20 @@ const getlogin = async (req, res) => {
   }
 };
 
+const getuser = async (req, res) => {
+    try {
+        const token = req.cookies.get("token")?.value||''        
+        
+        const decode = jwt.verify(token,process.env.TOKEN_SECRET)
+        const user = await sql`SELECT * FROM allusers WHERE id = ${decode.id};`;
+        return res.json(user)
+
+    } catch (error) {
+        throw new Error(error.message)
+    }
+  };
+  
+
 module.exports = {
-  getlogin,
+  getlogin,getuser
 };
