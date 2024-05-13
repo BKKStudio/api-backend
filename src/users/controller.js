@@ -1,5 +1,5 @@
 const {sql} = require("@vercel/postgres")
-const bcryptjs = require("bcrypt")
+const bcryptjs = require("bcryptjs")
 
 const getAllUsers = async (req,res) => {
   try {
@@ -26,7 +26,7 @@ const getUserฺById = async (req,res) => {
 const addUser = async (req,res) => {
   try {
     const { name, username, password,img } = await req.body;
-
+    
     //check if user already exists
     const user = await sql`SELECT * FROM users WHERE username = ${username};`
     
@@ -37,8 +37,8 @@ const addUser = async (req,res) => {
     //hash password
     const salt = await bcryptjs.genSalt(10);
     const hashedPassword = await bcryptjs.hash(password, salt);
-
-   await sql`INSERT INTO users (name,username,password,img) VALUES (${name},${username},${hashedPassword},${img});`
+ 
+     await sql`INSERT INTO users (name,username,password,img) VALUES (${name},${username},${hashedPassword},${img});`
     return res.send("สมัครสมาชิกเรียบร้อย กรุุณาเข้าสู่ระบบ").status(200)
   } catch (error) {
     return res.send(error);
@@ -46,7 +46,13 @@ const addUser = async (req,res) => {
 }
 
 const reMoveUser = async (req,res) => {
-
+  const id = req.params.id
+  try {
+    const user = await sql`DELETE FROM users WHERE id = ${id};`
+ return res.send("Deleted Success").status(200)
+  } catch (error) {
+    console.log(error);
+  }
  }
 module.exports = {
 getAllUsers,getUserฺById,addUser,reMoveUser
