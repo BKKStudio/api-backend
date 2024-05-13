@@ -14,16 +14,11 @@ router.get("/:id", async (req, res) => {
 });
 
     
-router.post("/", async (req, res) => {
-    const Newuser = await controller.addUser(req, res);
-    res.json(Newuser);
-});
+router.post("/", controller.addUser);
 
 
-router.delete("/:id", async (req, res) => {
-    const user = await controller.reMoveUser(req, res);
-    res.json(user);
-});
+router.delete("/:id",  controller.reMoveUser);
+   
 
 
 module.exports = router;

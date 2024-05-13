@@ -2,19 +2,19 @@ const {sql} = require("@vercel/postgres")
 
 const getAllProduct = async (req,res) => {
   try {
-    const product =
-    await sql`SELECT * FROM "Product";`;
-    return product.rows
+    const products =
+    await sql`SELECT * FROM products;`;
+    return products.rows
   } catch (error) {
     console.log(error);
   }
 }
 
-const getUserฺById = async (req,res) => {
+const getฺProductById = async (req,res) => {
   const id = req.params.id
   try {
     const product =
-    await sql`SELECT * FROM "Product" WHERE id = ${id};`;
+    await sql`SELECT * FROM products WHERE id = ${id};`;
     return product.rows
   } catch (error) {
     console.log(error);
@@ -24,5 +24,5 @@ const getUserฺById = async (req,res) => {
 
 
 module.exports = {
-    getAllProduct,getUserฺById
+    getAllProduct,getฺProductById
 }
