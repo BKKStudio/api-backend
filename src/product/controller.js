@@ -1,10 +1,9 @@
 const {sql} = require("@vercel/postgres")
-const bcryptjs = require("bcryptjs")
 
 const getAllProduct = async (req,res) => {
   try {
     const product =
-    await sql`SELECT * FROM Product;`;
+    await sql`SELECT * FROM "Product";`;
     return product.rows
   } catch (error) {
     console.log(error);
@@ -14,9 +13,9 @@ const getAllProduct = async (req,res) => {
 const getUserฺById = async (req,res) => {
   const id = req.params.id
   try {
-    const user =
-    await sql`SELECT * FROM Product WHERE id = ${id};`;
-    return user.rows
+    const product =
+    await sql`SELECT * FROM "Product" WHERE id = ${id};`;
+    return product.rows
   } catch (error) {
     console.log(error);
   }

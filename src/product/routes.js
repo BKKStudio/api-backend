@@ -3,8 +3,8 @@ const controller = require("./controller");
 const router = Router();
 
 router.get("/", async (req, res) => {
-    const products = await controller.getAllProduct(req, res);
-    res.json(products);
+    const product = await controller.getAllProduct(req, res);
+    res.json(product);
 });
 
 
