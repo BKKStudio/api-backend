@@ -13,7 +13,7 @@ router.get("/:id", async (req, res) => {
     res.json(user);
 });
 
-
+    
 router.post("/", async (req, res) => {
     const Newuser = await controller.addUser(req, res);
     res.json(Newuser);
