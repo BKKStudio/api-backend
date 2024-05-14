@@ -19,7 +19,7 @@ app.get("/",(req,res) => {
 })
 
 app.use(cors({
-    origin: 'https://websitedb.vercel.app/',
+    origin: 'https://websitedb.vercel.app',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
   }));
