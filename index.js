@@ -19,7 +19,7 @@ app.get("/",(req,res) => {
 })
 
 app.use(cors({
-    origin: 'http://localhost:3000',
+    origin: 'https://websitedb.vercel.app/',
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     credentials: true,
   }));
