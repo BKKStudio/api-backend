@@ -1,8 +1,5 @@
 const express = require("express");
 const ProductRoutes = require("./src/product/routes")
-const UsersRoutes = require("./src/users/routes")
-const LoginRoutes = require("./src/login/route")
-const GetData = require("./src/getDataToken/routes")
 const app = express();
 const cookieParser = require('cookie-parser');
 const cors = require('cors');
@@ -15,7 +12,8 @@ app.use(cors());
 app.use(cookieParser());
 
 app.get("/",(req,res) => {
-    res.send("Hello Word! Welcome To API WebSite By.6400502 Seksak Aranchot!")
+    res.send("Hello Word! Welcome To API WebSite By.6400502 Seksak Aranchot  (get:/api/products) (get:/api/products/id)")
+    
 })
 
 app.use(cors({
@@ -28,15 +26,5 @@ app.use(cors({
 app.use("/api/products",ProductRoutes)
 
 
-app.use("/api/users",UsersRoutes)
-
-app.use("/api/getDataToken",GetData)
-
-app.use("/api/login", LoginRoutes)
-
-app.get("/api/setcookie" , (req,res) => {
-  res.setHeader('Set-Cookie' , 'token=true')
-  res.send("set cookie success")
-})
 
 app.listen(process.env.PORT,() => console.log(`app on port ${process.env.PORT}`))
