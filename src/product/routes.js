@@ -9,8 +9,14 @@ router.get("/", async (req, res) => {
 
 
 router.get("/:id", async (req, res) => {
-    const user = await controller.getฺProductById (req, res);
-    res.json(user);
+    const Product = await controller.getฺProductById (req, res);
+    res.json(Product);
 });
+
+router.post("/", controller.AddProduct);
+
+router.delete("/:id",controller.removeProduct)
+
+router.put("/:id", controller.editProduct);
 
 module.exports = router;
